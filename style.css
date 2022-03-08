@@ -81,3 +81,29 @@ body{
     top: 2rem;
     left: 2.1rem;
 }
+
+.formula_bar{
+    /* vertical center */
+    display: flex;
+    align-items: center;
+    /* the browser distributes space between and around content items  */
+    /* horizontal center */
+    justify-content: center;
+}
+
+.formula_bar>*{
+    height: 70%;
+}
+
+.formula_bar>div{
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.address_input{
+    width: 4rem;
+}
+
+.formula_input{
+    width:calc(100vw - 8rem);
+}
