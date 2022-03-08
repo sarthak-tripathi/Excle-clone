@@ -80,6 +80,7 @@ body{
     position: absolute;
     top: 2rem;
     left: 2.1rem;
+    text-align:center;
 }
 
 .formula_bar{
