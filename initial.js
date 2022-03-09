@@ -9,6 +9,13 @@
 //Ascii->A
 
 let topRow = document.querySelector(".top_row");
+let leftCol = document.querySelector(".left_col");
+
+let grid = document.querySelector(".grid");
+
+let addressInput = document.querySelector(".address_input");
+
+
 for(let i =0; i< 26; i++){
     let div = document.createElement("div");
     div.setAttribute("class","cell");
@@ -16,7 +23,6 @@ for(let i =0; i< 26; i++){
     topRow.appendChild(div);
 
 }
-let leftCol = document.querySelector(".left_col");
 
 for(let i =1; i<=100; i++){
     let div = document.createElement("div");
@@ -28,7 +34,6 @@ for(let i =1; i<=100; i++){
 
 //2-D
 // grid
-let grid = document.querySelector(".grid");
 
 for(let i = 0 ; i<100; i++){
     let row = document.createElement("div");
@@ -52,7 +57,6 @@ for(let i = 0 ; i<100; i++){
 // i will get the addres of that cell
 // print the address in the UI -> in the address bar
 let AllGridCell = document.querySelectorAll(".grid .cell");
-let addressInput = document.querySelector(".address_input");
 for(let i = 0; i < AllGridCell.length; i++){
 
     AllGridCell[i].addEventListener("click",function(e){
@@ -75,13 +79,14 @@ for(let i = 0; i < AllGridCell.length; i++){
             cid = Number(cid);
             // alert(String.fromCharCode(cid +65) + " " + (rid + 1));
 
-            // alert("Bro yu can do it...Let's go!!!!");
+            
             // String.fromCharCode() method converts Unicode values to characters.
+            // put address on adress bar
             addressInput.value = String.fromCharCode(cid +65) +  (rid + 1);
 
             //current cell styling add
 
-            let cCell = document.querySelector(`.grid .cell[rid='${rid}'][cid='${cid}']`);
+            let cCell = AllGridCell[i];
             cCell.style.border = "2px solid green";
     })
 
@@ -90,7 +95,8 @@ for(let i = 0; i < AllGridCell.length; i++){
 // first cell select
 
 let firstCell = document.querySelector(".grid .cell[rid = '0'][cid = '0']");
-firstCell.click()
+firstCell.click();
+firstCell.focus();
 firstCell.style.border = "2px solid green";
 
 function getRidCidFromAddress(address){
