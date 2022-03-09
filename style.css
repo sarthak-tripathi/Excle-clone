@@ -30,6 +30,8 @@ body{
 .cell{
     border: 2px solid gray;
     height: 2rem;
+    text-align:center;
+    outline:none;
 }
 
 
