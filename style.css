@@ -1,8 +1,10 @@
 *{
     box-sizing: border-box;
+    font-weight: 100;
 }
 body{
     margin: 0px;
+    font-family: sans-serif;
 }
 /************ menu bar **********/
 .menu_bar{
@@ -40,7 +42,7 @@ body{
 
 .formula_bar{
     height: 2rem;
-    background-color: lightpink;
+    /* background-color: lightpink; */
 }
 
 .sheet_container{
@@ -49,48 +51,71 @@ body{
 }
 .grid_container{
     height:calc(100vh - (5rem + 2rem + 2.5rem) );
-    background-color: lightgreen;
+    /* background-color: lightgreen; */
     /* overflow: auto; */
     overflow-x:scroll ;
 }
 .cell{
-    border: 2px solid gray;
-    height: 2rem;
+    border: 0.1px solid rgb(160, 156, 156);
+    height: 1.4rem;
     text-align:center;
     outline:none;
+    border-right: none;
+    border-top: none;
+
 }
 
 
 .top_row{
-    text-align: center;
+    
     display: flex;
     position: relative;
-    top: -2rem;
-    left: 2.1rem;
+    left: 2rem;
+    top: -1.4rem;
+    background-color: #f1f2f6;
+    /* color: rgb(177,170,170); */
+   
 }
 .top_row .cell{
     /* these cell are flexed */
-    min-width: 5rem;
+    padding-top: 0.21rem;
+    text-align: center;
+    min-width: 6rem;
+    border-top: 0.1px solid rgb(160, 156, 156);
+    font-size: 0.7rem;
 
+}
+.left_col>.cell{
+    padding-top:0.21rem;
+    
+    font-size: 0.7rem;
 }
 
 .left_col{
     width: 2rem;
     text-align: center;
     position: relative;
-    top: -1.9rem;
+    top: -1.45rem;
+    background-color: #f1f2f6;
+    
 }
 
 
 .grid .cell{
     
     width: 5rem;
+    border:0.02px solid rgb(160,158,158);
+    border-top:none;
+    border-right: none;
+
 }
 
 .top_left_cell{
-    height: 2rem;
+    height: 1.4rem;
     width: 2rem;
-    background-color: gray;
+    /* background-color: gray; */
+    border-right: 5px solid lightgray;
+    border-bottom: 5px solid lightgray;
 }
 
 .row{
@@ -99,7 +124,7 @@ body{
 }
 
 .grid .cell{
-    min-width: 5rem;
+    min-width: 6rem;
 }
 
 .grid_container{
@@ -108,9 +133,9 @@ body{
 
 .grid{
     position: absolute;
-    top: 2rem;
-    left: 2.1rem;
-    text-align:center;
+    top: 1.35rem;
+    left: 2rem;
+    
 }
 /***************** formula bar*****************/
 

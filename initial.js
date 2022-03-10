@@ -68,7 +68,11 @@ for(let i = 0; i < AllGridCell.length; i++){
             // previous-> rremove border
             let prevCell = document
                 .querySelector(`.grid .cell[rid='${ridcidObj.rid}'][cid='${ridcidObj.cid}']`);
-            prevCell.style.border = "0.5px solid gray";
+            prevCell.style.border = "0.1px solid gray";
+
+            prevCell.style.borderRight="none";
+            prevCell.style.borderTop="none";
+            
         }
         
         
@@ -87,7 +91,8 @@ for(let i = 0; i < AllGridCell.length; i++){
             //current cell styling add
 
             let cCell = AllGridCell[i];
-            cCell.style.border = "2px solid green";
+            cCell.style.border = "2px solid #1B9CFC";
+           
     })
 
 }
