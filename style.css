@@ -6,38 +6,84 @@ body{
     margin: 0px;
     font-family: sans-serif;
 }
+
+select{
+    border:none;
+    outline: none;
+    padding-right: 0.5rem;
+    border-right: 1px solid;
+}
+
+
 /************ menu bar **********/
 .menu_bar{
     /* border: 2px solid red; */
     /* background-color:brown; */
-    height:5rem;
+    height:3rem;
     width:100vw;
     display: flex;
     align-items: center;
 }
+.menu_bar>*{
+    border-right:1px solid black;
+    height:70%;
+}
 
 
 .new_open_save_container{
-    margin-top: 1rem;
-    height:70%;
+    /* margin-top: 1rem; */
     border-right:1px solid black;
-    width:25%;
+    width:22%;
     display: flex;
     justify-content:space-evenly;
     align-items:center;
    
 }
 
+.formatting_container{
+    /* display: flex;
+    align-items: center; */
+    width:25%;
+    display: flex;
 
+}
+
+.font_family_input{
+flex:2;
+
+}
+
+.font_size_input{
+flex:1;
+}
+
+.bui_container, .alignment_container,.color_container{
+    width: 20%;
+    display: flex;
+
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.fas{
+    
+    font-size:1.4rem;
+    color: #2f3542;
+
+}
+
+.bui_container>*{
+    font-size: 1.2rem;
+}
+/* .formatting_container .font_family_input{
+    width : 60%;
+} */
 
 .icon_container{
     height:60%
 }
-.fas{
-    
-    font-size:1.5rem;
 
-}
+
 
 
 .formula_bar{
@@ -72,9 +118,8 @@ body{
     position: relative;
     left: 2rem;
     top: -1.4rem;
-    background-color: #f1f2f6;
     /* color: rgb(177,170,170); */
-   
+    
 }
 .top_row .cell{
     /* these cell are flexed */
@@ -82,6 +127,7 @@ body{
     text-align: center;
     min-width: 6rem;
     border-top: 0.1px solid rgb(160, 156, 156);
+    background-color: #f1f2f6;  
     font-size: 0.7rem;
 
 }
@@ -146,10 +192,14 @@ body{
     /* the browser distributes space between and around content items  */
     /* horizontal center */
     justify-content: center;
+    border: 1px solid gray;
+    border-right: none;
+    border-left: none;
 }
 
 .formula_bar>*{
     height: 70%;
+   
 }
 
 .formula_bar>div{
@@ -160,8 +210,21 @@ body{
 .address_input{
     width: 4rem;
     text-align: center;
+    border:none;
+    outline: none;
+    border-right:0.5px solid gray;
+    
 }
 
 .formula_input{
-    width:calc(100vw - 8rem);
+    width:calc(100vw - 12rem);
+    border:none;
+    border-left: 0.7px solid gray;
+    outline: none;
+}
+.formula_bar img{
+    display:inline-block;
+    height:60%;
+    margin-right: 0.2rem;
+    margin-left:1rem;
 }
