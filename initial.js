@@ -52,6 +52,32 @@ for(let i = 0 ; i<100; i++){
     }
     grid.appendChild(row);
 }
+//2 wqay binding setup
+let db= [];
+for(let i = 0; i < 100;i++){
+    let rowArr = [];
+    for(let j = 0; j < 26; j++){
+        let cellObject = {
+            color: "black",
+            backgroundColor :"white",
+            fontFamily:"Courier New", fontSize : 14,
+            halign:"center",
+            italic: "none",
+            underline: "none",
+            bold: "normal"
+        }
+        rowArr.push(cellObject);
+    }
+    db.push(cellObject);
+
+
+}
+
+
+
+
+
+
 
 // if i will click any cell
 // i will get the addres of that cell
