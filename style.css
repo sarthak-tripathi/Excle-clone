@@ -58,7 +58,7 @@ flex:1;
 }
 
 .bui_container, .alignment_container,.color_container{
-    width: 20%;
+    width: 17%;
     display: flex;
 
     justify-content: space-evenly;
@@ -70,6 +70,9 @@ flex:1;
     font-size:1.4rem;
     color: #2f3542;
 
+}
+.color_container{
+    border-right: none;
 }
 
 .bui_container>*{
@@ -227,4 +230,11 @@ flex:1;
     height:60%;
     margin-right: 0.2rem;
     margin-left:1rem;
+}
+
+.selected{
+    background-color: #a28989;
+    border-radius: 50%;
+    box-shadow:0 0 0 3px rgb(160 158 158);
+
 }
