@@ -1,13 +1,4 @@
-let  fontSizeInput = document.querySelector(".font_size_input");
-let  fontFamilyInput = document.querySelector(".font_family_input");
-let boldIcon = document.querySelector(".fa-bold");
-let underlineIcon = document.querySelector(".fa-underline");
-let italicIcon = document.querySelector(".fa-italic");
-let alignmentContainer = document.querySelector(".alignment_container");
-let textColorInput = document.querySelector(".fa-tint");
-let backgroundInput = document.querySelector(".fa-fill-drip");
-let textColorHInput = document.querySelector(".text_color");
-let backgroundHInput = document.querySelector(".background_color");
+
 
 
 //click to select color
@@ -24,6 +15,8 @@ textColorHInput.addEventListener("change" ,function(e){
         (`.grid .cell[rid='${ridcidObj.rid}'][cid='${ridcidObj.cid}']`);
         
     tobechangedCell.style.color = color;
+    let { rid, cid } = getRidCidFromAddress(address);
+    db[rid][cid].color = color;
 
 })
 
@@ -41,6 +34,8 @@ backgroundHInput.addEventListener("change" ,function(e){
         (`.grid .cell[rid='${ridcidObj.rid}'][cid='${ridcidObj.cid}']`);
         
     tobechangedCell.style.backgroundColor = color;
+    let { rid, cid } = getRidCidFromAddress(address);
+    db[rid][cid].backgroundColor = color;
 
 })
 
@@ -69,6 +64,8 @@ fontSizeInput.addEventListener("change",function(){
         
     // change font size
     tobechangedCell.style.fontSize = fontSize + "px";
+    let { rid, cid } = getRidCidFromAddress(address);
+    db[rid][cid].fontSize = fontSize;
 })
 //select font family
 

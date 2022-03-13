@@ -14,6 +14,17 @@ let leftCol = document.querySelector(".left_col");
 let grid = document.querySelector(".grid");
 
 let addressInput = document.querySelector(".address_input");
+// *********menu elements********
+let  fontSizeInput = document.querySelector(".font_size_input");
+let  fontFamilyInput = document.querySelector(".font_family_input");
+let boldIcon = document.querySelector(".fa-bold");
+let underlineIcon = document.querySelector(".fa-underline");
+let italicIcon = document.querySelector(".fa-italic");
+let alignmentContainer = document.querySelector(".alignment_container");
+let textColorInput = document.querySelector(".fa-tint");
+let backgroundInput = document.querySelector(".fa-fill-drip");
+let textColorHInput = document.querySelector(".text_color");
+let backgroundHInput = document.querySelector(".background_color");
 
 
 for(let i =0; i< 26; i++){
@@ -53,14 +64,16 @@ for(let i = 0 ; i<100; i++){
     grid.appendChild(row);
 }
 //2 wqay binding setup
-let db= [];
+
+let db = [];
 for(let i = 0; i < 100;i++){
     let rowArr = [];
-    for(let j = 0; j < 26; j++){
+    for (let j = 0; j < 26; j++){
         let cellObject = {
             color: "black",
             backgroundColor :"white",
-            fontFamily:"Courier New", fontSize : 14,
+            fontFamily:"Courier New", 
+            fontSize : 14,
             halign:"center",
             italic: "none",
             underline: "none",
@@ -68,7 +81,7 @@ for(let i = 0; i < 100;i++){
         }
         rowArr.push(cellObject);
     }
-    db.push(cellObject);
+    db.push(rowArr);
 
 
 }
@@ -118,6 +131,24 @@ for(let i = 0; i < AllGridCell.length; i++){
 
             let cCell = AllGridCell[i];
             cCell.style.border = "2px solid #1B9CFC";
+            // ******************2 way binding***************
+
+            let address = addressInput.value;
+            
+            let cellObject = db[rid][cid];  
+            let fontSize = cellObject.fontSize;
+            fontSizeInput.value = fontSize;
+
+
+
+
+
+
+
+
+
+
+
            
     })
 
