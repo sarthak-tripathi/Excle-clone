@@ -41,19 +41,6 @@ backgroundHInput.addEventListener("change" ,function(e){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 //change
 fontSizeInput.addEventListener("change",function(){
     let fontSize = fontSizeInput.value;
@@ -87,10 +74,25 @@ boldIcon.addEventListener("click", function(){
     let tobechangedCell = document.querySelector
         (`.grid .cell[rid='${ridcidObj.rid}'][cid='${ridcidObj.cid}']`);
         
+        // data base mei jake value set
+        let cellObject = db[ridcidObj.rid][ridcidObj.cid];
         // change font size
-    tobechangedCell.style.fontWeight = "bold";
-    //add shadow when the bold button is clicked
-    boldIcon.classList.add("selected");
+        if( cellObject.bold) {
+            tobechangedCell.style.fontWeight ="normal" ;
+            boldIcon.classList.remove("selected");
+            cellObject.bold = false;
+            
+        }else{
+
+            tobechangedCell.style.fontWeight ="bold" ;
+            boldIcon.classList.add("selected");
+            cellObject.bold = true;
+            
+        }
+        //add shadow when the bold button is clicked
+
+
+
 })
 
 underlineIcon.addEventListener("click",function(){
@@ -99,6 +101,22 @@ underlineIcon.addEventListener("click",function(){
     let ridcidObj = getRidCidFromAddress(address);
     let tobechangedCell = document.querySelector
         (`.grid .cell[rid='${ridcidObj.rid}'][cid='${ridcidObj.cid}']`);
+
+    let cellObject = db[ridcidObj.rid][ridcidObj.cid];
+
+    if( cellObject.underline) {
+        tobechangedCell.style.textDecoration ="none" ;
+        underlineIcon.classList.remove("selected");
+        cellObject.underline = false;
+        
+    }else{
+
+        tobechangedCell.style.textDecoration ="underline" ;
+        underlineIcon.classList.add("selected");
+        cellObject.underline = true;
+        
+    }
+       
         
         // change font size
     tobechangedCell.style.textDecoration = "underline";
@@ -113,6 +131,23 @@ italicIcon.addEventListener("click",function(){
     let ridcidObj = getRidCidFromAddress(address);
     let tobechangedCell = document.querySelector
         (`.grid .cell[rid='${ridcidObj.rid}'][cid='${ridcidObj.cid}']`);
+
+
+    let cellObject = db[ridcidObj.rid][ridcidObj.cid];
+    
+    if( cellObject.italic) {
+        tobechangedCell.style.fontStyle ="none" ;
+        italicIcon.classList.remove("selected");
+        cellObject.italic = false;
+        
+    }else{
+
+        tobechangedCell.style.fontStyle ="italic" ;
+        italicIcon.classList.add("selected");
+        cellObject.italic = true;
+        
+    }
+
         
         // change font size
     tobechangedCell.style.fontStyle = "italic";

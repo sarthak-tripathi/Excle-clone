@@ -75,9 +75,9 @@ for(let i = 0; i < 100;i++){
             fontFamily:"Courier New", 
             fontSize : 14,
             halign:"center",
-            italic: "none",
-            underline: "none",
-            bold: "normal"
+            italic: false,
+            underline: false,
+            bold: false
         }
         rowArr.push(cellObject);
     }
@@ -85,11 +85,6 @@ for(let i = 0; i < 100;i++){
 
 
 }
-
-
-
-
-
 
 
 // if i will click any cell
@@ -131,23 +126,34 @@ for(let i = 0; i < AllGridCell.length; i++){
 
             let cCell = AllGridCell[i];
             cCell.style.border = "2px solid #1B9CFC";
-            // ******************2 way binding***************
+
+
+
+            // ****************** menu 2 way binding ***************
 
             let address = addressInput.value;
-            
             let cellObject = db[rid][cid];  
+            // font size
+
             let fontSize = cellObject.fontSize;
             fontSizeInput.value = fontSize;
+            //boldness
+            //first remove
+            boldIcon.classList.remove("selected");
+            italicIcon.classList.remove("selected");
+            underlineIcon.classList.remove("selected");
 
+            if(cellObject.bold){
+                boldIcon.classList.add("select")
+            }
 
+            if(cellObject.italic){
+                italicIcon.classList.add("select")
+            }
 
-
-
-
-
-
-
-
+            if(cellObject.underline){
+                underlineIcon.classList.add("select")
+            }
 
            
     })
