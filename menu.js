@@ -173,7 +173,6 @@ alignmentContainer.addEventListener("click" ,function(e){
         for (let i = 0; i < optionElements.length; i++) {
             optionElements[i].classList.remove("selected");
         }
-
         //add shadow when the bold button is clicked
         // underlineIcon.classList.add("selected");
         e.target.classList.add("selected");
