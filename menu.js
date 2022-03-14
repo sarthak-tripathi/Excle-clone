@@ -167,10 +167,19 @@ alignmentContainer.addEventListener("click" ,function(e){
         let tobeChangedCell = document.querySelector
             (`.grid .cell[rId='${ridcidObj.rid}'][cId='${ridcidObj.cid}']`);
         // change fontSize property
-        tobeChangedCell.style.textAlign = hAlignment;;
+        tobeChangedCell.style.textAlign = hAlignment;
+        
+        let optionElements = alignmentContainer.children;
+        for (let i = 0; i < optionElements.length; i++) {
+            optionElements[i].classList.remove("selected");
+        }
+
         //add shadow when the bold button is clicked
         // underlineIcon.classList.add("selected");
         e.target.classList.add("selected");
+        // db update    
+        let cellObject = db[ridcidObj.rid][ridcidObj.cid];
+        cellObject.halign=hAlignment;
     }
 
 })

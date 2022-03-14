@@ -154,6 +154,16 @@ for(let i = 0; i < AllGridCell.length; i++){
             if(cellObject.underline){
                 underlineIcon.classList.add("select")
             }
+            if(cellObject.halign){
+                for(let i = 0; i < optionElements.length;i++){
+                    let elementClasses = optionElements[i].classList;
+                    let hAlignment = elementClasses[elementClasses.length-1];
+
+                    if(hAlignment == cellObject.halign){
+                        elementClasses.add("select");
+                    }
+                }
+            }
 
            
     })
