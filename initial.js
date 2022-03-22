@@ -14,6 +14,8 @@ let leftCol = document.querySelector(".left_col");
 let grid = document.querySelector(".grid");
 
 let addressInput = document.querySelector(".address_input");
+let formulaInput = document.querySelector(".formula_input");
+
 // *********menu elements********
 let  fontSizeInput = document.querySelector(".font_size_input");
 let  fontFamilyInput = document.querySelector(".font_family_input");
@@ -64,28 +66,34 @@ for(let i = 0 ; i<100; i++){
     grid.appendChild(row);
 }
 //2 wqay binding setup
-
+//default value for every sheet
 let db = [];
-for(let i = 0; i < 100;i++){
-    let rowArr = [];
-    for (let j = 0; j < 26; j++){
-        let cellObject = {
-            color: "black",
-            backgroundColor :"white",
-            fontFamily:"Courier New", 
-            fontSize : 14,
-            halign:"center",
-            italic: false,
-            underline: false,
-            bold: false
+function initDB(){
+    for(let i = 0; i < 100;i++){
+        let rowArr = [];
+        for (let j = 0; j < 26; j++){
+            let cellObject = {
+                color: "black",
+                backgroundColor: "white",
+                fontFamily: "'Courier New'",
+                fontSize: 14,
+                halign: "center",
+                italic: false,
+                underline: false,
+                bold: false,
+                value:"",
+                formula:""
+                
+            }
+            rowArr.push(cellObject);
         }
-        rowArr.push(cellObject);
+        db.push(rowArr);
+    
+    
     }
-    db.push(rowArr);
-
-
 }
 
+initDB();
 
 // if i will click any cell
 // i will get the addres of that cell
@@ -171,7 +179,7 @@ for(let i = 0; i < AllGridCell.length; i++){
 
 // first cell select
 
-let firstCell = document.querySelector(".grid .cell[rid = '0'][cid = '0']");
+let firstCell = document.querySelector(".grid .cell[rId='0'][cId='0']");
 firstCell.click();
 firstCell.focus();
 firstCell.style.border = "2px solid green";
@@ -183,7 +191,7 @@ function getRidCidFromAddress(address){
     let cid =AsciiValue - 65;
     let rid = Number(address.substring(1))- 1;
     return{
-        rid :rid, cid : cid
+        rid: rid, cid: cid
     }
 }
 

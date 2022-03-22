@@ -11,8 +11,7 @@ textColorHInput.addEventListener("change" ,function(e){
     let color = textColorHInput.value;
     let address = addressInput.value;
     let ridcidObj = getRidCidFromAddress(address);
-    let tobechangedCell = document.querySelector
-        (`.grid .cell[rid='${ridcidObj.rid}'][cid='${ridcidObj.cid}']`);
+    let tobechangedCell = document.querySelector(`.grid .cell[rId='${i}'][cId='${j}']`);
         
     tobechangedCell.style.color = color;
     let { rid, cid } = getRidCidFromAddress(address);
@@ -51,6 +50,8 @@ fontSizeInput.addEventListener("change",function(){
         
     // change font size
     tobechangedCell.style.fontSize = fontSize + "px";
+
+    
     let { rid, cid } = getRidCidFromAddress(address);
     db[rid][cid].fontSize = fontSize;
 })
@@ -164,10 +165,10 @@ alignmentContainer.addEventListener("click" ,function(e){
         let hAlignment = classesArr[classesArr.length - 1];
         let address = addressInput.value;
         let ridcidObj = getRidCidFromAddress(address);
-        let tobeChangedCell = document.querySelector
+        let tobechangedCell = document.querySelector
             (`.grid .cell[rId='${ridcidObj.rid}'][cId='${ridcidObj.cid}']`);
         // change fontSize property
-        tobeChangedCell.style.textAlign = hAlignment;
+        tobechangedCell.style.textAlign = hAlignment;
         
         let optionElements = alignmentContainer.children;
         for (let i = 0; i < optionElements.length; i++) {

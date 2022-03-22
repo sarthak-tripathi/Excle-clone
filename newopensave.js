@@ -1,6 +1,8 @@
 let downloadBtn = document.querySelector(".fa-save");
 let openBtn =   document.querySelector(".fa-envelope-open");
 let openInput  =   document.querySelector(".open_input");
+let newInput = document.querySelector(".fa-file");
+
 
 
 downloadBtn.addEventListener("click", function(e){
@@ -41,30 +43,40 @@ openInput.addEventListener("change", function (e) {
         let JSONdata = JSON.parse(event.target.result);
         db =JSONdata;
         console.log(db); 
+        setUI();
 
     });
 
 })
 
-function setUI(){
-    for(let i = 0; i < 100;i++){
-        let rowArr = [];
-        for (let j = 0; j < 26; j++){
-            //set all the property on ui with matchingrid,cid
-            let cellObject = db[i][j];
+
+newInput.addEventListener("click", function(){
+    // set db to empty
+    db=[];
+    //set initial entries
+    initDB();
+
+    //ui->map according  to new db
+    setUI();
+
+})
 
 
-            let tobeChangedCell = document.querySelector
-            (`.grid .cell[rId='${i}'][cId='${j}']`);
+function setUI() {
+    for(let i = 0 ; i  < 100 ; i++){
+        for(let j = 0; j< 26; j++){
+            cellObject = db[i][j];
 
-
-
-
-
-
+            let tobechangedCell = document.querySelector(`.grid .cell[rId='${i}'][cId='${j}']`);
+            tobechangedCell.innerText = cellObject.value;
+            tobechangedCell.style.color = cellObject.color;
+            tobechangedCell.style.backgroundColor = cellObject.backgroundColor;
+            tobechangedCell.style.fontFamily = cellObject.fontFamily;
+            tobechangedCell.style.textAlign = cellObject.halign;
+            tobechangedCell.style.textDecoration = cellObject.underline == false ? "none" : "underline";
+            tobechangedCell.style.fontStyle = cellObject.italic == false ? "normal" : "italic";
+            tobechangedCell.style.fontSize = cellObject.fontSize;
         }
-        db.push(rowArr);
-    
-    
     }
 }
+
