@@ -1,31 +1,27 @@
 let downloadBtn = document.querySelector(".fa-save");
-let openBtn =   document.querySelector(".fa-envelope-open");
-let openInput  =   document.querySelector(".open_input");
+let openBtn = document.querySelector(".fa-envelope-open");
+let openInput = document.querySelector(".open_input");
 let newInput = document.querySelector(".fa-file");
-
-
-
-downloadBtn.addEventListener("click", function(e){
-    //anchor create
+downloadBtn.addEventListener("click", function (e) {
+    // anchor create
     let a = document.createElement("a");
-    //file put -> db array
-    // data link form mei href ke andr add ho jayega
-    var StringCode = encodeURIComponent(JSON.stringify(db));
-    var dataStr = "data:text/json;charset=utf-8," + 
-    StringCode;
-    
+    // file put -> db array 
+    var StringCode = encodeURIComponent(JSON.stringify(sheetsDb));
+    var dataStr = "data:text/json;charset=utf-8," +
+        StringCode;
     a.href = dataStr;
-    
     a.download = "file.json";
-
-    //anchor click
+    // // anchor click
     a.click();
+    // styling -> pass
+    // var ws = XLSX.utils.json_to_sheet(db);
+    // var wb = XLSX.utils.book_new();
+    // XLSX.utils.book_append_sheet(wb, ws, "sheet1");
+    // XLSX.writeFile(wb, "file.xlsx");
 })
-
 openBtn.addEventListener("click", function (e) {
     openInput.click();
 })
-
 openInput.addEventListener("change", function (e) {
     // files array
     let filesArr = openInput.files;
@@ -37,46 +33,53 @@ openInput.addEventListener("change", function (e) {
     const reader = new FileReader();
     // read as text 
     reader.readAsText(file);
-    //when file get read load event get call
     reader.addEventListener('load', (event) => {
         // img.src = event.target.result;
         let JSONdata = JSON.parse(event.target.result);
-        db =JSONdata;
-        console.log(db); 
-        setUI();
-
+        sheetsDb = JSONdata
+        db = sheetsDb[0];
+        sheetList.children = [];
+        setinitUI();
+        setSheets();
     });
-
 })
-
-
-newInput.addEventListener("click", function(){
+function setSheets() {
+    console.log(sheetsDb.length)
+    sheetList.innerHTML="";
+    for (let i = 0; i < sheetsDb.length; i++) {
+        sheetOpenHandler();
+    }
+}
+newInput.addEventListener("click", function () {
     // set db to empty
-    db=[];
-    //set initial entries
-    initDB();
+    sheetsDb = [];
 
-    //ui->map according  to new db
-    setUI();
+    // set initial entries
+    initDB(); // -> initial Db
+    // ui -> map accoriding to new db
+    db = sheetsDb[0];
+    setinitUI();
+    setSheets();
+    // ui se remove sheets and sheetsDB;
 
 })
+function setinitUI() {
+    for (let i = 0; i < 100; i++) {
 
-
-function setUI() {
-    for(let i = 0 ; i  < 100 ; i++){
-        for(let j = 0; j< 26; j++){
-            cellObject = db[i][j];
-
-            let tobechangedCell = document.querySelector(`.grid .cell[rId='${i}'][cId='${j}']`);
-            tobechangedCell.innerText = cellObject.value;
-            tobechangedCell.style.color = cellObject.color;
-            tobechangedCell.style.backgroundColor = cellObject.backgroundColor;
-            tobechangedCell.style.fontFamily = cellObject.fontFamily;
-            tobechangedCell.style.textAlign = cellObject.halign;
-            tobechangedCell.style.textDecoration = cellObject.underline == false ? "none" : "underline";
-            tobechangedCell.style.fontStyle = cellObject.italic == false ? "normal" : "italic";
-            tobechangedCell.style.fontSize = cellObject.fontSize;
+        for (let j = 0; j < 26; j++) {
+            //    set all the properties on ui with matchiing rid,cid
+            let cellObject = db[i][j];
+            let tobeChangedCell = document.querySelector(`.grid .cell[rId='${i}'][cId='${j}']`);
+            console.log(cellObject.value);
+            console.log(tobeChangedCell)
+            tobeChangedCell.innerText = cellObject.value;
+            tobeChangedCell.style.color = cellObject.color;
+            tobeChangedCell.style.backgroundColor = cellObject.backgroundColor;
+            tobeChangedCell.style.fontFamily = cellObject.fontFamily;
+            tobeChangedCell.style.textAlign = cellObject.halign;
+            tobeChangedCell.style.textDecoration = cellObject.underline == false ? "none" : "underline";
+            tobeChangedCell.style.fontStyle = cellObject.italic == false ? "normal" : "italic";
+            tobeChangedCell.style.fontSize = cellObject.fontSize;
         }
     }
 }
-
