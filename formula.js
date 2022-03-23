@@ -3,8 +3,9 @@ for(let i = 0; i < AllGridCell.length; i++){
             let content = AllGridCell[i].textContent;
 
             let address = addressInput.value;
-            let ridcidObj = getRidCidFromAddress(address);
-            db[ridcidObj.rid][ridcidObj.cid].value = content;
+            let {rid,cid} = getRidCidFromAddress(address);
+            // db[ridcidObj.rid][ridcidObj.cid].value = content;
+            setUI(content, rid, cid);
         })
 
 }
@@ -24,6 +25,7 @@ formulaInput.addEventListener("keydown" , function(e){
         console.log(value);
         setUI(value,rid,cid);
         db[rid][cid].formula = cFormula;
+        setParent(addressOfTheCell, cFormula);
 
     }
 })
@@ -58,5 +60,38 @@ function setUI(value, rid, cid){
 
         tobechangedCell.textContent = value;
         db[rid][cid].value = value;
+
+        //change your children -> reevaluta -> set ui
+        let childrenArr = db[rid][cid].children;
+
+        for(let i = 0; i < childrenArr.length; i++){
+            let chriciObj = getRidCidFromAddress(childrenArr[i]);
+            let chCellObj = db[chriciObj.cid][chriciObj.rid];
+            let  value = evaluateFormula(chCellObj.formula);
+            setUI(value,chriciObj.rid,chriciObj.cid)
+
+        }
+
+
+}
+function setParent(address, formula) {
+
+    console.log(formula);
+    let formulaEntity = formula.split(" ");
+    
+    for(let i = 0; i < formulaEntity.length; i++){
+        
+        let ascii = formulaEntity[i].charCodeAt(0);
+        if(ascii >= 65 && ascii <= 90){
+            
+            //address se rid and cid nikalege
+            let parentrcObj = getRidCidFromAddress(formulaEntity[i]);
+            //db value
+            let children = db[parentrcObj.rid][parentrcObj.cid].children;
+            children.push(address);
+           
+        } 
+    }
+    console.log(formula);
 
 }

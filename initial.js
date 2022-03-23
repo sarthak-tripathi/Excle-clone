@@ -82,7 +82,8 @@ function initDB(){
                 underline: false,
                 bold: false,
                 value:"",
-                formula:""
+                formula:"",
+                children: []
                 
             }
             rowArr.push(cellObject);
@@ -170,7 +171,11 @@ for(let i = 0; i < AllGridCell.length; i++){
                         elementClasses.add("selected");
                     }
                 }
-            }
+
+            }   
+          
+            formulaInput.value = cellObject.formula
+            
 
            
     })
